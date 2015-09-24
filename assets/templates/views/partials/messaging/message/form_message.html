@@ -1,0 +1,47 @@
+<div class="alert alert-danger" ng-if="error">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Error.</strong><span ng-if="!errorMessage"> Please review the problems below</span><span ng-if="errorMessage"> {{errorMessage}}</span>
+</div>
+
+<div class="list-group" ng-controller="MessageCreateController">
+  <div class='list-group-item'>
+    <h4>Target Channel</h4>
+    <div class='form-inline'>
+      <select name="resourceTemp" class='form-control select' name="resourceTemp" ng-model="data.selectedChannelId">
+        <option ng-repeat='channel in channels' value='{{channel.id}}'>{{channel.name}}</option>
+      </select>
+      
+    </div>
+  </div>
+
+  <div class="list-group-item">
+    <form-input name="payload" label="Payload" required="true" property="instance.payload" type="text"
+                errors="errors.payload"></form-input>
+  </div>
+
+  <div class="list-group-item">
+    <div class="list-group-item active">Apple & Google Messaging Configurations</div>
+    <form-input name="apple_badge" label="Apple Badge" required="false" property="instance.apple_badge" type="text"
+                errors="errors.apple_badge"></form-input>
+    <form-input name="apple_alert" label="Apple Alert" required="false" property="instance.apple_alert" type="text"
+                errors="errors.apple_alert"></form-input>
+    <form-input name="apple_sound" label="Apple Sound" required="false" property="instance.apple_sound" type="text"
+                errors="errors.apple_sound"></form-input>
+    <form-input name="apple_expiry" label="Apple Expiry" required="false" property="instance.apple_expiry" type="text"
+                errors="errors.apple_expiry"></form-input>
+    <form-input name="apple_content_available" label="Apple Content-Available" required="false" property="instance.apple_content_available" type="text"
+                errors="errors.apple_content_available"></form-input>
+    <form-input name="google_collapseKey" label="Google Collapse Key" required="false"
+                property="instance.google_collapseKey" type="text" errors="errors.google_collapseKey"></form-input>
+    <form-input name="google_delayWhileIdle" label="Google Delay While Idle" required="false"
+                property="instance.google_delayWhileIdle" type="text"
+                errors="errors.google_delayWhileIdle"></form-input>
+    <form-input name="google_timeToLive" label="Google TTL" required="false" property="instance.google_timeToLive"
+                type="text" errors="errors.google_timeToLive"></form-input>
+  </div>
+
+  <div class="form-actions list-group-item">
+    <input class="btn btn-primary" name="commit" type="submit" value="Submit" ng-click="create(instance, data.selectedChannelId)" ng-disabled="loading"/>
+    <a href="#/messaging" class="btn"> Return</a>
+  </div>
+</div>

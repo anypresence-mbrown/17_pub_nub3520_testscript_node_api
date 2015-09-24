@@ -1,0 +1,135 @@
+<style>
+    .full {
+        width: 100%;
+    }
+    .no-data {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .top-margin {
+        margin-top: 15px;
+    }
+</style>
+
+<div class="page-header">
+  <h1>Analytics</h1>
+</div>
+
+<div class="row full">
+  <div class="col-xs-12 page-header">
+    <h3>Filters</h3>
+  </div>
+  <div class="col-xs-12">
+    <div>
+      <label class="row full">
+        <span class="col-xs-3">From:</span>
+        <div class="col-xs-5">
+          <input style="width: 100%;" type="date" name="from-date" ng-model="filters.start">
+        </div>
+      </label>
+    </div>
+    <div>
+      <label class="row full">
+        <span class="col-xs-3">To:</span>
+        <div class="col-xs-5">
+          <input style="width: 100%;" type="date" name="to-date" ng-model="filters.end">
+        </div>
+      </label>
+    </div>
+    <div>
+      <label class="row full">
+        <span class="col-xs-3">Version:</span>
+        <div class="col-xs-5">
+          <select
+          class="form-control"
+          ng-model="filters.version"
+          ng-change="versionChanged()"
+          ng-options="v for v in filters.versions">
+            <option>None selected</option>
+          </select>
+        </div>
+      </label>
+    </div>
+    <div>
+      <label class="row full">
+        <span class="col-xs-3">Model:</span>
+        <div class="col-xs-5">
+          <select
+          class="form-control"
+          ng-model="filters.model"
+          ng-options="m for m in filters.models">
+            <option>None selected</option>
+          </select>
+        </div>
+      </label>
+    </div>
+    <div class="row full">
+      <div class="col-xs-offset-3 col-xs-5">
+        <button
+        type="button"
+        class="full btn btn-lg btn-primary"
+        ng-click="requestData()">
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show="alerts.has.warning">
+  <div class="alert alert-warning top-margin">
+    <span ng-model="alerts.warning">{{alerts.warning.message}}</span>
+  </div>
+</div>
+
+<div ng-if="!plotInitialized">
+  <div class="row">
+    <div class="col-xs-12 jumbotron no-data">
+      <h3>Select filters to apply</h3>
+    </div>
+  </div>
+</div>
+
+<div ng-if="!chartHasValues">
+  <div class="row">
+    <div class="col-xs-12 jumbotron no-data">
+      <h3>No information available</h3>
+    </div>
+  </div>
+</div>
+
+<div ng-if="plotInitialized && chartHasValues">
+
+
+  <div class="row full">
+    <div class="col-xs-12 page-header">
+      <h3>Average Response Time</h3>
+    </div>
+    <div class="col-xs-12">
+      <linechart data="avg_rsp_time_series" options="avg_rsp_time_options" mode="" height="300"></linechart>
+    </div>
+  </div>
+
+
+  <div class="row full">
+    <div class="col-xs-12 page-header">
+      <h3>Average Response Size</h3>
+    </div>
+    <div class="col-xs-12">
+      <linechart data="avg_rsp_size_series" options="avg_rsp_size_options" mode="" height="300"></linechart>
+    </div>
+  </div>
+
+
+
+  <div class="row full">
+    <div class="col-xs-12 page-header">
+      <h3>Count</h3>
+    </div>
+    <div class="col-xs-12">
+      <linechart data="count_series" options="count_options" mode="" height="300"></linechart>
+    </div>
+  </div>
+
+
+</div>

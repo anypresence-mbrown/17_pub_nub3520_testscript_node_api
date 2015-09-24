@@ -1,0 +1,165 @@
+<div class="container-fluid container-messaging">
+  <div class="row">
+    <ul class="breadcrumb">
+      <li>
+        <a href="#/index">Home</a>
+      </li>
+      <li class="active">Messaging</li>
+    </ul>
+  </div>
+  <div class="row">
+    
+    <div class="list-group-item table-responsive" ng-controller="DeviceListController">
+      <div class="list-group-item active title-bg-msg">
+        <div class="pull-left">
+          <h4>Devices</h4>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-default" href="#/messaging/device/new"><i class="fa fa-plus"></i> Create Device</a>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Identifier</th>
+          <th>Provider</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="device in instances track by $index">
+          <td>{{device.identifier}}</td>
+          <td>{{device.provider_name}}</td>
+          <td class="actions">
+            <div class='btn-group pull-right'>
+              <a type='button' class='btn btn-default' href="#/messaging/device/{{device.id}}/edit">Edit</a>
+              <a type='button' class='btn btn-default' href="#/messaging/device/{{device.id}}">Details</a>
+              <a type='button' class='btn btn-danger' ng-click='destroy(device.id)'>Remove</a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <paginator ng-if='instances.length > 0'></paginator>
+    </div>
+
+    <div class="list-group-item" ng-controller="ChannelListController">
+      <div class="list-group-item active title-bg-msg">
+        <div class="pull-left">
+          <h4>Channels</h4>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-default" href="#/messaging/channel/new"><i class="fa fa-plus"></i> Create Channel</a>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th class='align-right'>Subscribe/Unsubscribe</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="channel in instances track by $index">
+          <td>{{channel.name}}</td>
+          <td class='actions-subscribe'>            
+            <div class='form-inline pull-right'>
+              <select class='form-control select' name="resourceTemp" ng-model="channel.selectedDeviceIdentifier">
+                <option ng-repeat='device in devices' value='{{device.id}}'>{{device.identifier}}</option>
+              </select>
+              <div class='btn-group'>
+                <a class='btn btn-primary' ng-click='subscribe(channel.name, channel.selectedDeviceIdentifier)'><i class="fa fa-plus"></i></a>
+                <a class='btn btn-primary' ng-click='unsubscribe(channel.name, channel.selectedDeviceIdentifier)'><i class="fa fa-minus"></i></a>
+              </div>
+            </div>
+          </td>
+          
+          <td class='actions'>
+            <div class='btn-group pull-right'>
+              <a type='button' class='btn btn-default' href="#/messaging/channel/{{channel.id}}/edit">Edit</a>
+              <a type='button' class='btn btn-default' href="#/messaging/channel/{{channel.id}}">Details</a>
+              <a type='button' class='btn btn-danger' ng-click='destroy(channel.id)'>Remove</a>
+            </div>
+          </td>
+          
+          
+        </tr>
+        </tbody>
+      </table>
+      
+      <paginator ng-if='instances.length > 0'></paginator>
+    </div>
+    
+    <div class="list-group-item" ng-controller="MessageListController">
+      <div class="list-group-item active title-bg-msg">
+        <div class="pull-left">
+          <h4>Messages</h4>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-default" href="#/messaging/message/new"><i class="fa fa-envelope"></i> Post Message</a>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Payload</th>
+          <th>Sent to</th>
+          <th>Sent date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="msg in instances track by $index">
+          <td>{{msg.id}}</td>
+          <td>{{msg.payload}}</td>
+          <td>{{msg.channelName}}</td>
+          <td>{{msg.time}}</td>
+        </tr>
+      </table>
+      
+      <paginator ng-if='instances.length > 0'></paginator>
+      
+    </div>
+  </div>
+
+<div class="alert alert-danger" ng-if="error">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Error.</strong><span ng-if="!errorMessage">An unexpected error was encountered</span><span ng-if="errorMessage">{{errorMessage}}</span>
+</div>
+
+<div class="alert" ng-if="instances.length == 0">
+  <h4>No messages yet</h4>
+  There are no messages to list.
+  <a class="btn btn-mini" href="#/messaging/device/new"> Create a new one</a>
+</div>
+
+<div ng-if="instances.length > 0">
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Identifier</th>
+      <th>Password</th>
+      <th>Provider Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="instance in instances">
+      <td><a ng-href="#/messaging/device/{{instance.id}}">{{instance.identifier}}</a></td>
+      <td><a ng-href="#/messaging/device/{{instance.id}}">{{instance.password}}</a></td>
+      <td><a ng-href="#/messaging/device/{{instance.id}}">{{instance.provider_name}}</a></td>
+      <td class="text-center">
+        <a ng-href="#/messaging/{{instance.id}}/edit" rel="tooltip" title="Edit">
+          <i class="fa fa-pencil"></i>
+        </a>
+        &nbsp;
+        &nbsp;
+        <a ng-href="#/messaging" title="Delete" rel="tooltip nofollow" ng-click="destroy(instance)">
+          <i class="fa fa-trash-o"></i>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

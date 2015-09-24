@@ -1,0 +1,16 @@
+<div class="alert alert-danger" ng-if="error">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Error.</strong><span ng-if="!errorMessage"> Please review the problems below</span><span ng-if="errorMessage"> {{errorMessage}}</span>
+</div>
+
+<form-input name="channel" label="Channel" required="false" property="instance.channel" type="text" errors="errors.channel"></form-input>
+<form-input name="message" label="Message" required="false" property="instance.message" type="text" errors="errors.message"></form-input>
+<form-input name="pubkey" label="Pubkey" required="false" property="instance.pubkey" type="text" errors="errors.pubkey"></form-input>
+<form-input name="sig" label="Sig" required="false" property="instance.sig" type="text" errors="errors.sig"></form-input>
+<form-input name="subkey" label="Subkey" required="false" property="instance.subkey" type="text" errors="errors.subkey"></form-input>
+<form-input name="timestamp" label="Timestamp" required="false" property="instance.timestamp" type="text" errors="errors.timestamp"></form-input>
+
+<div class="form-actions">
+  <input class="btn btn-primary" name="commit" type="submit" value="Submit" ng-click="submit(instance)" ng-disabled="loading" />
+  <a href="#/publishes" class="btn">Cancel</a>
+</div>

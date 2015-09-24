@@ -1,0 +1,67 @@
+@media only screen and (max-width : 768px) {
+  .customActionNavbar li {
+    display: block;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .customActionNavbar li a {
+    width: 100%;
+  }
+
+  .customActionNavbarHeader .navbar-toggle {
+    padding: 0px !important;
+    margin-top: 0px !important;
+  }
+
+  .actions {
+    width: 100px !important;
+  }
+}
+
+.title-bg-msg {
+  height: 60px;
+  color: white;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.container-messaging .row .list-group-item table tbody {
+  height: 256px;
+}
+
+td.actions {
+  width: 250px;
+}
+
+td.actions-subscribe {
+  text-align: right;
+}
+
+td.actions-subscribe .form-inline {
+  width: 350px;
+  display: inline-block;
+  text-align: right;
+}
+
+td.actions-subscribe {
+  min-width: 350px;
+}
+
+  td.actions-subscribe .select {
+    width: 250px;
+  }
+
+.form-group .select {
+  width: 100px;
+}
+
+.customActionNavbarHeader .navbar-collapse {
+  padding-left: 0px !important;
+}
+
+.channels-actions {
+    margin-top: 5px;
+}

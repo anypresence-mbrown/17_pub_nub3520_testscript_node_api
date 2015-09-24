@@ -1,0 +1,5 @@
+--timeout 60000
+--reporter dot
+--ui bdd
+test/bootstrap.test.js
+test/server/**/*.test.js

@@ -1,0 +1,5 @@
+<div class='paginator btn-group'>
+  <button ng-click='pagination.prevPage()' type='button' class='btn btn-default'>Prev</button>
+  <button ng-repeat='page in pagination.totalPages' ng-click='pagination.setPage(page)' ng-class="{'active btn-primary' : page == pagination.page}" type='button' class='btn btn-default'>{{page}}</button>
+  <button ng-click='pagination.nextPage()' type='button' class='btn btn-default'>Next</button>
+</div>

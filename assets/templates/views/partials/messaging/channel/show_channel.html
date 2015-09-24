@@ -1,0 +1,54 @@
+<ul class="breadcrumb">
+  <li><a href="#/index">Home</a></li>
+  <li><a href="#/messaging">Messaging</a></li>
+  <li class="active">Channel</li>
+</ul>
+
+<div class="page-header">
+  <h1>Channel {{instance.name}}</h1>
+  <a class="btn btn-primary" ng-href="#/messaging/channel/{{instance.id}}/edit">
+    <i class="fa fa-pencil"></i>
+    Edit
+  </a>
+</div>
+
+<div class="alert alert-danger" ng-if="error">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Error.</strong><span ng-if="!errorMessage">An unexpected error was encountered</span><span ng-if="errorMessage">{{errorMessage}}</span>
+</div>
+
+<table class="table table-striped table-hover" condensed="false" hover="true" striped="true">
+  <tbody>
+    <tr>
+      <td>Id</td>
+      <td>{{instance.id}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{instance.name}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Devices</h3>
+  <div ng-if="instance.devices">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="device in instance.devices">
+          <td>
+             {{device.id}}
+          <td class="text-right">
+            <a ng-href="#/messaging/device/{{device.id}}/edit" rel="tooltip" title="Edit">
+              <i class="fa fa-pencil"></i>
+            </a>
+            &nbsp;
+            &nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

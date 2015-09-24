@@ -1,0 +1,35 @@
+<br/>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default" heading="Sign In" type="default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sign In</h3>
+      </div>
+      <div class="panel-body">
+        <form id="new_admin" accept-charset="UTF-8" class="simple_form new_admin" novalidate="novalidate">          
+          <div class="form-group email required">
+            <label class="email required control-label" for="admin_email">
+              <abbr title="required">*</abbr>
+              Email
+            </label>
+            <div>
+              <input autofocus="autofocus" class="string email required form-control" id="admin_email" size="50" type="text" ng-model="instance.email"></input>
+            </div>
+          </div>
+          <div class="form-group password optional">
+            <label class="password optional control-label" for="admin_password">Password</label>
+            <div>
+              <input class="password optional form-control" id="admin_password" size="50" type="password" ng-model="instance.password"></input>
+            </div>
+          </div>
+          <input class="btn btn-primary" name="commit" type="submit" value="Log in" ng-click="login(instance)" ng-disabled="loading"></input>
+          <p class="text-danger" ng-if="error">
+            <br/>
+            <strong>Error.</strong><span ng-if="errorMessage"> {{errorMessage}}</span><span ng-if="!errorMessage">An unexpected error was encountered</span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

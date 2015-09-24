@@ -1,0 +1,7 @@
+.tmp/*
+.git/*
+test/*
+README.md
+build.log
+node_modules/*
+views/admin/layout.jade

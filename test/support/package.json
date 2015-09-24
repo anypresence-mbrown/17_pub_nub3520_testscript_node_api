@@ -1,0 +1,12 @@
+{
+    "name": "script-populate-activities",
+    "version": "0.0.1",
+    "description": "Script to populate activities database with activity documents",
+    "author": "Juan Carlos Cancela <cancela.juancarlos@gmail.com>",
+    "scripts": {
+        "start": "node generate_activities.js"
+    },
+    "dependencies": {
+        "node-curl": "*"
+    }
+}
