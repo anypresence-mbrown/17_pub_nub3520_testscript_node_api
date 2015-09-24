@@ -152,7 +152,7 @@ Any tests in this folder will be included in the test suite.
 
 Example payload:
 ```
-{"channel":"Unquestionable pretentiousness","message":"Pasturing wandering","pubkey":"Proxy misinterpreting","sig":"Lithium coddled","subkey":"Nascent parishioners","timestamp":"Breathtaking misinterpreting"}```
+{"channel":"Azana congresswoman","message":"Gratings limbo","pubkey":"Puffin scholars","sig":"Prancing familiarize","subkey":"Kindergartener styled","timestamp":"Sprouts catalogues"}```
 
 ### Create
 To create a Publish, make a POST like below using a body similar

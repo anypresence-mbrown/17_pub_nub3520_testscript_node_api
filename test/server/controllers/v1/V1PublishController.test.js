@@ -28,7 +28,7 @@ describe('V1Publish Controller', function() {
 
     // Refresh model
     model = stubs.sails.models['v1publish'] = _.cloneDeep(stubs.genericModel);
-    values = {"id":71382,"channel":"International substantially","message":"Stamps scuttling","pubkey":"Anniversaries Cyrus","sig":"Tactlessly anneal","subkey":"Recognizing contractually","timestamp":"Czechoslovakian concurrently"};
+    values = {"id":51114,"channel":"Pretentiousness rounds","message":"Transgressions greeted","pubkey":"Agglutinations unctions","sig":"Overbalancing slave","subkey":"Dikes extraordinarily","timestamp":"Colitis scholastically"};
     
   });
 
